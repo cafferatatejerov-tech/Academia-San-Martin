@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #1a237e;
+  --color-primary-light: #3949ab;
+  --color-dark: #0d1b4b;
+  --color-white: #ffffff;
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #f5f7fc;
+  color: #1a1a2e;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-oswald), system-ui, sans-serif;
+}
+
+/* Textura diagonal sutil para fondos claros */
+.texture-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 12px,
+    rgba(26, 35, 126, 0.03) 12px,
+    rgba(26, 35, 126, 0.03) 24px
+  );
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ═══ RESPONSIVE SYSTEM ═══ */
+
+/* NO overflow-x: hidden en html/body — rompe touch events en iOS Safari */
+/* El overflow se previene con width: 100% en los contenedores */
+html { width: 100%; }
+body { width: 100%; }
+main { width: 100%; overflow: hidden; }
+* { box-sizing: border-box; }
+
+/* Fluid type scale */
+:root {
+  --text-xs: clamp(0.7rem, 1.5vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 1.8vw, 0.875rem);
+  --text-base: clamp(0.875rem, 2vw, 1rem);
+  --text-lg: clamp(1rem, 2.5vw, 1.125rem);
+  --text-xl: clamp(1.1rem, 3vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 4vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 5vw, 1.875rem);
+  --text-4xl: clamp(1.8rem, 6vw, 2.25rem);
+  --text-5xl: clamp(2.2rem, 7vw, 3rem);
+  --text-6xl: clamp(2.8rem, 9vw, 4rem);
+
+  /* Spacing scale */
+  --space-section-y: clamp(3rem, 6vw, 6rem);
+  --space-container-x: clamp(1rem, 4vw, 1.5rem);
+  --gap-cards: clamp(1rem, 2vw, 2rem);
+}
+
+/* Global section padding */
+section {
+  padding-left: var(--space-container-x) !important;
+  padding-right: var(--space-container-x) !important;
+}
+
+/* Touch targets — solo botones, NO a-tags para evitar expansión involuntaria */
+button, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Inputs — prevent iOS zoom */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Images */
+img { max-width: 100%; height: auto; }
+
+/* Grids responsive */
+.grid-cols-auto-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--gap-cards);
+}
+.grid-cols-auto-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--gap-cards);
+}
+
+/* Responsive section padding */
+@media (max-width: 640px) {
+  :root {
+    --space-section-y: 3rem;
+    --space-container-x: 1.25rem;
+    --gap-cards: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  :root {
+    --space-section-y: 4rem;
+    --space-container-x: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --space-section-y: 6rem;
+    --space-container-x: 2rem;
+    --gap-cards: 1.5rem;
+  }
+}
+
+/* Fondo estadio — clase reutilizable para secciones claras */
+.stadium-bg {
+  position: relative;
+  overflow: hidden;
+}
+.stadium-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/bg-crowd.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 0;
+}
+.stadium-bg > * {
+  position: relative;
+  z-index: 1;
+}
