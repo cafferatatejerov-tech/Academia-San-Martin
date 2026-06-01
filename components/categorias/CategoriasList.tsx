@@ -3,78 +3,55 @@
 import Link from "next/link";
 import { CATEGORIAS } from "@/lib/categories";
 
-const ICONOS: Record<string, string> = {
-  "baby-futbol":  "⚽",
-  "futbol-base":  "🎯",
-  "pre-juvenil":  "📈",
-  "juvenil":      "⚡",
-  "adultos":      "🏃",
-  "arqueros":     "🧤",
-  "femenino":     "⭐",
-};
-
-function CatCard({ cat }: { cat: (typeof CATEGORIAS)[0] }) {
-  return (
-    <Link href={`/categorias/${cat.slug}`} style={{ textDecoration: "none", display: "block" }} className="cat-card-link">
-      <div className="cat-card">
-        <div style={{ fontSize: "2.4rem", marginBottom: "0.75rem" }} aria-hidden="true">
-          {ICONOS[cat.slug] ?? "⚽"}
-        </div>
-        <p style={{ fontFamily: "var(--font-raleway)", fontSize: "0.95rem", fontWeight: 800, color: "#0d1b4b", textTransform: "uppercase", margin: "0 0 4px", lineHeight: 1.1 }}>
-          {cat.nombre}
-        </p>
-        <p style={{ fontSize: "0.72rem", color: "#94a3b8", margin: "0 0 12px" }}>
-          {cat.edadTexto}
-        </p>
-        <hr style={{ border: "none", borderTop: "1px solid #e8ecf8", margin: "0 0 12px", width: "100%" }} />
-        <p style={{ fontFamily: "var(--font-raleway)", fontSize: "1.3rem", fontWeight: 700, color: "#1a237e", margin: "0 0 2px" }}>
-          S/ {cat.precio}
-        </p>
-        <p style={{ fontSize: "0.7rem", color: "#94a3b8", margin: 0 }}>por mes</p>
-      </div>
-    </Link>
-  );
-}
-
 export function CategoriasList() {
   return (
     <>
       <style>{`
-        .cat-card {
-          width: 100%;
-          aspect-ratio: 1 / 1;
-          border: 1px solid #e8ecf8;
-          border-top: 4px solid #1a237e;
-          border-radius: 8px;
-          padding: 24px 16px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          background: #ffffff;
-          box-sizing: border-box;
-          transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .cat-card-link:hover .cat-card {
-          box-shadow: 0 6px 20px rgba(26,35,126,0.12);
-          transform: translateY(-3px);
-        }
-        .cat-grid {
+        .cat-row {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
+          grid-template-columns: 1fr 140px 160px 110px 40px;
+          padding: 1.4rem 2rem;
+          align-items: center;
+          gap: 1rem;
+          border-top: 1px solid #e8ecf8;
+          text-decoration: none;
+          background: #ffffff;
+          transition: background 0.15s;
         }
-        @media (max-width: 1024px) {
-          .cat-grid { grid-template-columns: repeat(3, 1fr); }
+        .cat-row:nth-child(even) { background: #fafbff; }
+        .cat-row:hover { background: #f0f3ff; }
+        .cat-header {
+          display: grid;
+          grid-template-columns: 1fr 140px 160px 110px 40px;
+          padding: 0.9rem 2rem;
+          gap: 1rem;
+          background: #0d1b4b;
         }
         @media (max-width: 640px) {
-          .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+          .cat-header { grid-template-columns: 1fr 90px 80px; }
+          .cat-header .hide-mobile { display: none; }
+          .cat-row { grid-template-columns: 1fr 90px 80px; }
+          .cat-row .hide-mobile { display: none; }
         }
       `}</style>
-      <div className="cat-grid">
+
+      <div style={{ border: "1px solid #e2e8f0", overflow: "hidden" }}>
+        {/* Header */}
+        <div className="cat-header">
+          {["Categoría", "Edad", "Horario", "Precio/mes", ""].map((h, i) => (
+            <span key={i} className={i >= 2 && i < 4 ? "hide-mobile" : ""} style={{ fontSize: "0.65rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase", letterSpacing: "0.12em" }}>{h}</span>
+          ))}
+        </div>
+
+        {/* Filas */}
         {CATEGORIAS.map((cat) => (
-          <CatCard key={cat.slug} cat={cat} />
+          <Link key={cat.slug} href={`/categorias/${cat.slug}`} className="cat-row">
+            <span style={{ fontWeight: 700, color: "#0d1b4b", fontSize: "1.05rem", textTransform: "uppercase", letterSpacing: "0.03em" }}>{cat.nombre}</span>
+            <span style={{ fontSize: "0.9rem", color: "#64748b" }}>{cat.edadTexto}</span>
+            <span className="hide-mobile" style={{ fontSize: "0.88rem", color: "#94a3b8" }}>{cat.horario}</span>
+            <span className="hide-mobile" style={{ fontWeight: 800, color: "#0d1b4b", fontSize: "1.1rem" }}>S/ {cat.precio}</span>
+            <span style={{ color: "#0d1b4b", fontSize: "0.9rem", textAlign: "right" }}>→</span>
+          </Link>
         ))}
       </div>
     </>

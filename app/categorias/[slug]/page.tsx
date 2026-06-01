@@ -88,7 +88,7 @@ export default async function CategoriaPage({ params }: { params: Promise<{ slug
               </ul>
             </div>
 
-            <div style={{ backgroundColor: "#1a237e", borderRadius: "12px", padding: "1.5rem", textAlign: "center" }}>
+            <div style={{ backgroundColor: "#0d1b4b", borderRadius: "12px", padding: "1.5rem", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-raleway)", fontSize: "2.5rem", fontWeight: 700, color: "#ffffff", margin: "0 0 4px" }}>S/ {cat.precio}</p>
               <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.88rem", margin: "0 0 1.25rem" }}>por mes · matrícula gratuita</p>
               <Link href="/inscribete" style={{ display: "block", backgroundColor: "#ffffff", color: "#1a237e", padding: "12px", borderRadius: "8px", textDecoration: "none", fontWeight: 700, fontSize: "0.95rem", minHeight: "48px", textAlign: "center", fontFamily: "var(--font-raleway)", letterSpacing: "0.04em" }}>
