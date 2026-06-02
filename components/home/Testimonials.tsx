@@ -58,7 +58,7 @@ function MobileCarousel() {
 
 export function Testimonials() {
   return (
-    <section style={{ padding: "4rem 0", backgroundColor: "#f0f2fb" }} aria-labelledby="testimonios-heading">
+    <section style={{ padding: "4rem 0", backgroundColor: "#f5f7fc" }} aria-labelledby="testimonios-heading">
       <style>{`
         .testi-desktop { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
         .testi-mobile { display: none; }
@@ -68,7 +68,7 @@ export function Testimonials() {
         }
       `}</style>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <div style={{ marginBottom: "3rem" }}>
           <span style={badgeStyle}>Familias</span>
           <h2 id="testimonios-heading" style={sectionTitleStyle}>Lo Que Dicen las Familias</h2>
           <p style={sectionSubStyle}>Más de 200 familias confían en nosotros.</p>
@@ -104,6 +104,6 @@ export function Testimonials() {
   );
 }
 
-const badgeStyle: React.CSSProperties = { display: "inline-block", backgroundColor: "#1a237e", color: "#ffffff", padding: "3px 14px", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "0.75rem" };
+const badgeStyle: React.CSSProperties = { display: "inline-block", backgroundColor: "transparent", border: "1px solid #1a237e", color: "#1a237e", padding: "3px 14px", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "0.75rem" };
 const sectionTitleStyle: React.CSSProperties = { fontFamily: "var(--font-raleway)", fontSize: "clamp(2rem, 5vw, 2.8rem)", fontWeight: 700, color: "#0d1b4b", margin: "0 0 0.5rem", textTransform: "uppercase" };
 const sectionSubStyle: React.CSSProperties = { color: "#5a6a8a", fontSize: "1rem", margin: 0 };

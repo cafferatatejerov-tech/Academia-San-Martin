@@ -6,6 +6,7 @@ import { Schedule } from "@/components/home/Schedule";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Achievements } from "@/components/home/Achievements";
 import { NewsPreview } from "@/components/home/NewsPreview";
+import { LocationSection } from "@/components/home/LocationSection";
 import { CTASection } from "@/components/home/CTASection";
 import { SPORTS_SCHEMA, LOCAL_BUSINESS_SCHEMA } from "@/lib/seo";
 
@@ -28,9 +29,10 @@ export default function HomePage() {
       <CategoriesPreview />
       <WhyUs />
       <Schedule />
+      <NewsPreview />
       <Testimonials />
       <Achievements />
-      <NewsPreview />
+      <LocationSection />
       <CTASection />
     </>
   );

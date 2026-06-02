@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Send, MessageCircle } from "lucide-react";
 import { ACADEMIA } from "@/lib/constants";
 import { CATEGORIAS } from "@/lib/categories";

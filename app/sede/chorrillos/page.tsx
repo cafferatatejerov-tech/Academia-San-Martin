@@ -128,6 +128,5 @@ export default function SedeChorrillosPage() {
   );
 }
 
-const badgeStyle: React.CSSProperties = { display: "inline-block", backgroundColor: "rgba(255,255,255,0.15)", color: "#ffffff", padding: "3px 14px", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" };
 const thStyle: React.CSSProperties = { padding: "0.7rem 1rem", textAlign: "left", color: "#64748b", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" };
 const tdStyle: React.CSSProperties = { padding: "0.75rem 1rem", color: "#64748b", fontSize: "0.85rem", verticalAlign: "top" };

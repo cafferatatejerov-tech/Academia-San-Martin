@@ -89,12 +89,11 @@ export function PricingGrid() {
               style={{
                 backgroundColor: "#ffffff",
                 border: `2px solid ${isPopular ? "#1a237e" : "#e8ecf8"}`,
-                borderRadius: "14px",
+                borderRadius: "4px",
                 overflow: "hidden",
                 boxShadow: isPopular ? "0 8px 32px rgba(26,35,126,0.15)" : "0 2px 8px rgba(26,35,126,0.05)",
                 display: "flex", flexDirection: "column",
                 position: "relative",
-                transform: isPopular ? "scale(1.02)" : "scale(1)",
                 transition: "box-shadow 0.2s",
               }}
               onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(26,35,126,0.14)")}
@@ -104,7 +103,7 @@ export function PricingGrid() {
               {isPopular && (
                 <div style={{ backgroundColor: "#1a237e", padding: "6px", textAlign: "center" }}>
                   <span style={{ color: "#ffffff", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                    ⭐ MÁS POPULAR
+                    MÁS POPULAR
                   </span>
                 </div>
               )}
